@@ -1,0 +1,65 @@
+.task-details-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.panel-content {
+  padding: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #666;
+  font-size: 13px;
+}
+
+.detail-value {
+  color: #333;
+  font-size: 13px;
+}
+
+.layer-inbound { color: #3b82f6; font-weight: 600; text-transform: uppercase; }
+.layer-lake { color: #8b5cf6; font-weight: 600; text-transform: uppercase; }
+.layer-mart { color: #10b981; font-weight: 600; text-transform: uppercase; }
+.layer-egress { color: #f59e0b; font-weight: 600; text-transform: uppercase; }

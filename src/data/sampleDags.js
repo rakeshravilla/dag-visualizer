@@ -1,0 +1,102 @@
+export const sampleDag1 = {
+    id: 'data_pipeline',
+    name: 'Data Pipeline Architecture',
+    nodes: [
+        { id: 'api_source', position: { x: 0, y: 0 }, data: { label: 'API Source', layer: 'inbound', taskType: 'source' } },
+        { id: 'db_source', position: { x: 0, y: 0 }, data: { label: 'Database Source', layer: 'inbound', taskType: 'source' } },
+        { id: 'file_source', position: { x: 0, y: 0 }, data: { label: 'File Source', layer: 'inbound', taskType: 'source' } },
+        { id: 'raw_api', position: { x: 0, y: 0 }, data: { label: 'raw_api_data', layer: 'lake', taskType: 'storage' } },
+        { id: 'raw_db', position: { x: 0, y: 0 }, data: { label: 'raw_db_data', layer: 'lake', taskType: 'storage' } },
+        { id: 'raw_files', position: { x: 0, y: 0 }, data: { label: 'raw_file_data', layer: 'lake', taskType: 'storage' } },
+        { id: 'staging', position: { x: 0, y: 0 }, data: { label: 'staging_unified', layer: 'mart', taskType: 'transform' } },
+        { id: 'dim_customer', position: { x: 0, y: 0 }, data: { label: 'dim_customer', layer: 'mart', taskType: 'transform' } },
+        { id: 'fact_orders', position: { x: 0, y: 0 }, data: { label: 'fact_orders', layer: 'mart', taskType: 'transform' } },
+        { id: 'analytics_db', position: { x: 0, y: 0 }, data: { label: 'Analytics DB', layer: 'egress', taskType: 'destination' } },
+        { id: 'bi_tool', position: { x: 0, y: 0 }, data: { label: 'BI Tool', layer: 'egress', taskType: 'destination' } },
+    ],
+    edges: [
+        { id: 'e1', source: 'api_source', target: 'raw_api' },
+        { id: 'e2', source: 'db_source', target: 'raw_db' },
+        { id: 'e3', source: 'file_source', target: 'raw_files' },
+        { id: 'e4', source: 'raw_api', target: 'staging' },
+        { id: 'e5', source: 'raw_db', target: 'staging' },
+        { id: 'e6', source: 'raw_files', target: 'staging' },
+        { id: 'e7', source: 'staging', target: 'dim_customer' },
+        { id: 'e8', source: 'staging', target: 'fact_orders' },
+        { id: 'e9', source: 'dim_customer', target: 'analytics_db' },
+        { id: 'e10', source: 'fact_orders', target: 'analytics_db' },
+        { id: 'e11', source: 'dim_customer', target: 'bi_tool' },
+        { id: 'e12', source: 'fact_orders', target: 'bi_tool' },
+    ]
+};
+
+export const sampleDag2 = {
+    id: 'ecommerce_pipeline',
+    name: 'E-commerce Data Pipeline',
+    nodes: [
+        { id: 'orders_api', position: { x: 0, y: 0 }, data: { label: 'Orders API', layer: 'inbound', taskType: 'source' } },
+        { id: 'products_db', position: { x: 0, y: 0 }, data: { label: 'Products DB', layer: 'inbound', taskType: 'source' } },
+        { id: 'raw_orders', position: { x: 0, y: 0 }, data: { label: 'raw_orders', layer: 'lake', taskType: 'storage' } },
+        { id: 'raw_products', position: { x: 0, y: 0 }, data: { label: 'raw_products', layer: 'lake', taskType: 'storage' } },
+        { id: 'stg_orders', position: { x: 0, y: 0 }, data: { label: 'stg_orders', layer: 'mart', taskType: 'transform' } },
+        { id: 'stg_products', position: { x: 0, y: 0 }, data: { label: 'stg_products', layer: 'mart', taskType: 'transform' } },
+        { id: 'mart_sales', position: { x: 0, y: 0 }, data: { label: 'mart_sales_summary', layer: 'mart', taskType: 'transform' } },
+        { id: 'dashboard', position: { x: 0, y: 0 }, data: { label: 'Sales Dashboard', layer: 'egress', taskType: 'destination' } },
+    ],
+    edges: [
+        { id: 'e1', source: 'orders_api', target: 'raw_orders' },
+        { id: 'e2', source: 'products_db', target: 'raw_products' },
+        { id: 'e3', source: 'raw_orders', target: 'stg_orders' },
+        { id: 'e4', source: 'raw_products', target: 'stg_products' },
+        { id: 'e5', source: 'stg_orders', target: 'mart_sales' },
+        { id: 'e6', source: 'stg_products', target: 'mart_sales' },
+        { id: 'e7', source: 'mart_sales', target: 'dashboard' },
+    ]
+};
+
+export const sampleDag3 = {
+    id: 'analytics_platform',
+    name: 'Analytics Platform Pipeline',
+    nodes: [
+        { id: 'crm_api', position: { x: 0, y: 0 }, data: { label: 'CRM API', layer: 'inbound', taskType: 'source' } },
+        { id: 'postgres', position: { x: 0, y: 0 }, data: { label: 'PostgreSQL', layer: 'inbound', taskType: 'source' } },
+        { id: 'csv_files', position: { x: 0, y: 0 }, data: { label: 'CSV Files', layer: 'inbound', taskType: 'source' } },
+        { id: 'kafka', position: { x: 0, y: 0 }, data: { label: 'Kafka Stream', layer: 'inbound', taskType: 'source' } },
+        { id: 'raw_crm', position: { x: 0, y: 0 }, data: { label: 'raw_crm', layer: 'lake', taskType: 'storage' } },
+        { id: 'raw_transactions', position: { x: 0, y: 0 }, data: { label: 'raw_transactions', layer: 'lake', taskType: 'storage' } },
+        { id: 'raw_products', position: { x: 0, y: 0 }, data: { label: 'raw_products', layer: 'lake', taskType: 'storage' } },
+        { id: 'raw_events', position: { x: 0, y: 0 }, data: { label: 'raw_events', layer: 'lake', taskType: 'storage' } },
+        { id: 'stg_customers', position: { x: 0, y: 0 }, data: { label: 'stg_customers', layer: 'mart', taskType: 'transform' } },
+        { id: 'stg_orders', position: { x: 0, y: 0 }, data: { label: 'stg_orders', layer: 'mart', taskType: 'transform' } },
+        { id: 'stg_products', position: { x: 0, y: 0 }, data: { label: 'stg_products', layer: 'mart', taskType: 'transform' } },
+        { id: 'dim_customer', position: { x: 0, y: 0 }, data: { label: 'dim_customer', layer: 'mart', taskType: 'transform' } },
+        { id: 'dim_product', position: { x: 0, y: 0 }, data: { label: 'dim_product', layer: 'mart', taskType: 'transform' } },
+        { id: 'fct_sales', position: { x: 0, y: 0 }, data: { label: 'fct_sales', layer: 'mart', taskType: 'transform' } },
+        { id: 'tableau', position: { x: 0, y: 0 }, data: { label: 'Tableau', layer: 'egress', taskType: 'destination' } },
+        { id: 'ml_model', position: { x: 0, y: 0 }, data: { label: 'ML Model', layer: 'egress', taskType: 'destination' } },
+        { id: 'api_endpoint', position: { x: 0, y: 0 }, data: { label: 'REST API', layer: 'egress', taskType: 'destination' } },
+    ],
+    edges: [
+        { id: 'e1', source: 'crm_api', target: 'raw_crm' },
+        { id: 'e2', source: 'postgres', target: 'raw_transactions' },
+        { id: 'e3', source: 'csv_files', target: 'raw_products' },
+        { id: 'e4', source: 'kafka', target: 'raw_events' },
+        { id: 'e5', source: 'raw_crm', target: 'stg_customers' },
+        { id: 'e6', source: 'raw_transactions', target: 'stg_orders' },
+        { id: 'e7', source: 'raw_products', target: 'stg_products' },
+        { id: 'e8', source: 'raw_events', target: 'stg_orders' },
+        { id: 'e9', source: 'stg_customers', target: 'dim_customer' },
+        { id: 'e10', source: 'stg_products', target: 'dim_product' },
+        { id: 'e11', source: 'stg_orders', target: 'fct_sales' },
+        { id: 'e12', source: 'dim_customer', target: 'fct_sales' },
+        { id: 'e13', source: 'dim_product', target: 'fct_sales' },
+        { id: 'e14', source: 'dim_customer', target: 'tableau' },
+        { id: 'e15', source: 'dim_product', target: 'tableau' },
+        { id: 'e16', source: 'fct_sales', target: 'tableau' },
+        { id: 'e17', source: 'fct_sales', target: 'ml_model' },
+        { id: 'e18', source: 'dim_customer', target: 'api_endpoint' },
+        { id: 'e19', source: 'fct_sales', target: 'api_endpoint' },
+    ]
+};
+
+export const allDags = [fahEgressPipeline, sampleDag1, sampleDag2, sampleDag3];
