@@ -99,4 +99,4 @@ export const sampleDag3 = {
     ]
 };
 
-export const allDags = [fahEgressPipeline, sampleDag1, sampleDag2, sampleDag3];
+export const allDags = [sampleDag1, sampleDag2, sampleDag3];
